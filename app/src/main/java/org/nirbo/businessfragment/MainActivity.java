@@ -11,13 +11,14 @@ import android.view.WindowManager;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.nirbo.businessfragment.fragments.BusinessCardFragment;
+import org.nirbo.businessfragment.fragments.NestedMapFragment;
 
 public class MainActivity extends ActionBarActivity {
 
     public static FragmentManager fm;
-    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,6 @@ public class MainActivity extends ActionBarActivity {
         fm = getFragmentManager();
         hideStatusBar();
         initFragment();
-        initMap();
     }
 
     // Hides Android's statue bar - swiping down from the top will make it re-appear temporarily
@@ -52,14 +52,6 @@ public class MainActivity extends ActionBarActivity {
                 ft.addToBackStack(fragmentTag);
             }
             ft.commit();
-        }
-    }
-
-    // Initialize Google Maps fragment
-    private void initMap() {
-        if (mMap == null) {
-            mMap = ((MapFragment) fm.findFragmentById(R.id.map))
-                    .getMap();
         }
     }
 

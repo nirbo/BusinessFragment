@@ -2,10 +2,13 @@ package org.nirbo.businessfragment.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
@@ -14,6 +17,8 @@ public class BusinessCardFragment extends Fragment {
 
     public static final String FRAGMENT_TAG = "businessCard";
     private FragmentManager fm;
+    private GoogleMap mMap;
+    private NestedMapFragment mMapFragment;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -27,6 +32,22 @@ public class BusinessCardFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        initMap();
+    }
+
+    // Initialize Google Maps fragment
+    private void initMap() {
+        if (mMap == null) {
+            mMapFragment = NestedMapFragment.newInstance();
+
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.add(R.id.map, mMapFragment);
+            ft.commit();
+        }
+    }
 
 }
