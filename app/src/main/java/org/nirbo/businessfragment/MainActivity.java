@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
 
     // Initialize the view with the first Fragment that will be displayed upon activity launch
     private void initFragment() {
-        replaceFragment(new BusinessCardFragment(), BusinessCardFragment.FRAGMENT_TAG, false);
+        replaceFragment(BusinessCardFragment.newInstance(), BusinessCardFragment.FRAGMENT_TAG, false);
     }
 
     // Static method that replaces the currently viewed Fragment with another Fragment.

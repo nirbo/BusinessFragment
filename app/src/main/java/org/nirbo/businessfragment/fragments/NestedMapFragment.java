@@ -10,10 +10,12 @@ import com.google.android.gms.maps.UiSettings;
 
 public class NestedMapFragment extends MapFragment {
 
+    // Default constructor
     public NestedMapFragment() {
         super();
     }
 
+    // newInstance method to instantiate new fragments
     public static NestedMapFragment newInstance() {
         NestedMapFragment fragment = new NestedMapFragment();
         return fragment;
@@ -22,6 +24,7 @@ public class NestedMapFragment extends MapFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle bundle) {
         View view = super.onCreateView(inflater, viewGroup, bundle);
+
         return view;
     }
 

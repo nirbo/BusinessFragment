@@ -16,18 +16,29 @@ import org.nirbo.businessfragment.R;
 public class BusinessCardFragment extends Fragment {
 
     public static final String FRAGMENT_TAG = "businessCard";
-    private FragmentManager fm;
+
+    private static FragmentManager fm;
     private GoogleMap mMap;
     private NestedMapFragment mMapFragment;
 
     // Default constructor
     public BusinessCardFragment() {
+        super();
+    }
+
+    // newInstance method to instantiate new fragments
+    public static BusinessCardFragment newInstance() {
         fm = MainActivity.fm;
+        BusinessCardFragment fragment = new BusinessCardFragment();
+
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.business_card_fragment, container, false);
+
+
 
         return view;
     }
