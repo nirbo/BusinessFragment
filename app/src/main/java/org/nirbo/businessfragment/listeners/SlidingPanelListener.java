@@ -18,11 +18,7 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
 
     @Override
     public void onPanelSlide(View slidingPanel, float slideOffset) {
-        float anchorPoint = mSliderLayout.getAnchorPoint();
 
-        if (slideOffset < anchorPoint) {
-            mSliderLayout.anchorPanel();
-        }
     }
 
     @Override

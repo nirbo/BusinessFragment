@@ -7,9 +7,8 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     sothree:shadowHeight="5dp"
-    sothree:paralaxOffset="250dp"
-    sothree:fadeColor="@android:color/transparent"
-    sothree:overlay="true">
+    sothree:paralaxOffset="100dp"
+    sothree:fadeColor="@android:color/transparent">
 
     <FrameLayout
         android:id="@+id/map"
