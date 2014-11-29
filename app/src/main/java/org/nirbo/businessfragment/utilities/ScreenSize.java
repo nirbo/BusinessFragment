@@ -14,26 +14,20 @@ public class ScreenSize {
 
     public static int getDisplayHeight(final Display display) {
         final Point point = new Point();
-
         display.getSize(point);
-        int screenHeight = point.y;
 
-        return screenHeight;
+        return point.y;
     }
 
     public static int getDisplayWidth(final Display display) {
         final Point point = new Point();
-
         display.getSize(point);
-        int screenWidth = point.x;
 
-        return screenWidth;
+        return point.x;
     }
 
     public static int getDisplaySeventyPercent(int screenHeight) {
-        int seventyPercentScreenHeight = (70 * screenHeight) / 100;
-
-        return seventyPercentScreenHeight;
+        return (70 * screenHeight) / 100;
     }
 
 }
