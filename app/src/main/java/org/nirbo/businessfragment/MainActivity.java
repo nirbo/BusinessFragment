@@ -9,12 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.LatLng;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.nirbo.businessfragment.fragments.BusinessCardFragment;
-import org.nirbo.businessfragment.fragments.NestedMapFragment;
+import org.nirbo.businessfragment.listeners.SlidingPanelListener;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -26,8 +24,16 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.main_activity);
 
         fm = getFragmentManager();
+
         hideStatusBar();
         initFragment();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        setSlidingLayoutParams();
     }
 
     // Hides Android's statue bar - swiping down from the top will make it re-appear temporarily
@@ -53,6 +59,16 @@ public class MainActivity extends ActionBarActivity {
             }
             ft.commit();
         }
+    }
+
+    // Customize the sliding layout's features
+    private void setSlidingLayoutParams() {
+        SlidingUpPanelLayout mSliderPanel = (SlidingUpPanelLayout) findViewById(R.id.slider_layout);
+        mSliderPanel.setPanelSlideListener(new SlidingPanelListener(mSliderPanel));
+        float anchorPoint = 0.6f;
+
+        mSliderPanel.setAnchorPoint(anchorPoint);
+        mSliderPanel.anchorPanel();
     }
 
     @Override

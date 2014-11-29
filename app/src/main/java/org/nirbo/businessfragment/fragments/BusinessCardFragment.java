@@ -19,7 +19,6 @@ public class BusinessCardFragment extends Fragment {
 
     private static FragmentManager fm;
     private GoogleMap mMap;
-    private NestedMapFragment mMapFragment;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -29,18 +28,13 @@ public class BusinessCardFragment extends Fragment {
     // newInstance method to instantiate new fragments
     public static BusinessCardFragment newInstance() {
         fm = MainActivity.fm;
-        BusinessCardFragment fragment = new BusinessCardFragment();
 
-        return fragment;
+        return new BusinessCardFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.business_card_fragment, container, false);
-
-
-
-        return view;
+        return inflater.inflate(R.layout.business_card_fragment, container, false);
     }
 
     @Override
@@ -53,7 +47,7 @@ public class BusinessCardFragment extends Fragment {
     // Initialize Google Maps fragment
     private void initMap() {
         if (mMap == null) {
-            mMapFragment = NestedMapFragment.newInstance();
+            NestedMapFragment mMapFragment = NestedMapFragment.newInstance();
 
             FragmentTransaction ft = fm.beginTransaction();
             ft.add(R.id.map, mMapFragment);

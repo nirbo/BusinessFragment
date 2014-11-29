@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    sothree:panelHeight="40dp"
-    sothree:shadowHeight="6dp"
+    sothree:shadowHeight="5dp"
+    sothree:paralaxOffset="250dp"
     sothree:fadeColor="@android:color/transparent"
     sothree:overlay="true">
 
@@ -18,10 +18,20 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/business_card_content_root"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/material_orange_900">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Business Content - TBD"
+            android:textSize="24dp">
+        </TextView>
     </LinearLayout>
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
