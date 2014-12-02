@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">BusinessFragment</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="share_button">Share</string>
+    <string name="checkin_button">Check In</string>
 
 </resources>

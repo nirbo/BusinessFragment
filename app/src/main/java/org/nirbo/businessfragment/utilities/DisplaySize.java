@@ -3,7 +3,7 @@ package org.nirbo.businessfragment.utilities;
 import android.graphics.Point;
 import android.view.Display;
 
-public class ScreenSize {
+public class DisplaySize {
 
     public static Point getDisplaySize(final Display display) {
         final Point point = new Point();
@@ -26,8 +26,11 @@ public class ScreenSize {
         return point.x;
     }
 
-    public static int getDisplaySeventyPercent(int screenHeight) {
-        return (70 * screenHeight) / 100;
+    public static int getHeightPercent(int percentage, int screenHeight) {
+        return (percentage * screenHeight) / 100;
     }
 
+    public static int getWidthPercent(int percentage, int screenWidth) {
+        return (percentage * screenWidth) / 100;
+    }
 }
