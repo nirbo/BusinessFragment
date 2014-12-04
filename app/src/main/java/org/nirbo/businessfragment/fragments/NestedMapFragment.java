@@ -5,9 +5,11 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,9 +19,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.nirbo.businessfragment.R;
+import org.nirbo.businessfragment.listeners.ZoomBarOnChangeListener;
+import org.nirbo.businessfragment.views.VerticalSeekBar;
+
 public class NestedMapFragment extends MapFragment {
 
     static NestedMapFragment fragment;
+    private Activity mContext;
+    private VerticalSeekBar mMapZoomBar;
 
     // Default constructor
     public NestedMapFragment() {
@@ -35,6 +43,9 @@ public class NestedMapFragment extends MapFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle bundle) {
         View view = super.onCreateView(inflater, viewGroup, bundle);
+
+        mContext = getActivity();
+        mMapZoomBar = (VerticalSeekBar) mContext.findViewById(R.id.map_zoom_bar);
 
         return view;
     }
@@ -74,9 +85,19 @@ public class NestedMapFragment extends MapFragment {
                     .zoom(15)
                     .build();
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            // TODO: FIX CAMERA ANIMATION WHEN SETTING ZOOMBAR PROGRESS
+//            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             mMap.addMarker(markerOptions);
+
+            setZoomBarToCurrentLevel(mMap);
+            mMapZoomBar.setOnSeekBarChangeListener(new ZoomBarOnChangeListener(mMap));
         }
+    }
+
+    private void setZoomBarToCurrentLevel(GoogleMap map) {
+        float zoomLevel = map.getCameraPosition().zoom;
+        mMapZoomBar.setProgress((int) zoomLevel);
     }
 
 }

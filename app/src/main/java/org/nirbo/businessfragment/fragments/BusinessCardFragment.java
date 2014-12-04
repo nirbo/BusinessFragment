@@ -1,6 +1,5 @@
 package org.nirbo.businessfragment.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
 import org.nirbo.businessfragment.utilities.ViewSize;
+import org.nirbo.businessfragment.views.VerticalSeekBar;
 
 public class BusinessCardFragment extends Fragment {
 
@@ -25,6 +24,7 @@ public class BusinessCardFragment extends Fragment {
     private static FragmentManager fm;
     private GoogleMap mMap;
     private ImageView mBusinessPhoto;
+    private VerticalSeekBar mMapZoomBar;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -43,6 +43,7 @@ public class BusinessCardFragment extends Fragment {
         View view = inflater.inflate(R.layout.business_card_fragment, container, false);
 
         mBusinessPhoto = (ImageView) view.findViewById(R.id.business_photo);
+        mMapZoomBar = (VerticalSeekBar) view.findViewById(R.id.map_zoom_bar);
 
         return view;
     }
@@ -69,6 +70,9 @@ public class BusinessCardFragment extends Fragment {
     // Set the Business Card views layout and sizes
     private void initBusinessCardLayout() {
         ViewSize.setViewHeight(20, mBusinessPhoto);
+        ViewSize.setViewHeight(70, mMapZoomBar);
     }
+
+
 
 }

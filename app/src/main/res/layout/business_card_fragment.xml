@@ -11,9 +11,23 @@
     sothree:fadeColor="@android:color/transparent">
 
     <FrameLayout
-        android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+        <org.nirbo.businessfragment.views.VerticalSeekBar
+            android:id="@+id/map_zoom_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|right"
+            android:max="16"
+            android:progress="0">
+        </org.nirbo.businessfragment.views.VerticalSeekBar>
     </FrameLayout>
 
     <LinearLayout
@@ -41,9 +55,11 @@
                 android:id="@+id/share_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:text="@string/share_button"
                 android:textSize="20sp"
+                android:layout_marginRight="1.5dp"
+                android:layout_marginEnd="1.5dp"
                 android:background="@drawable/business_fragment_button_selector">
             </Button>
 
@@ -51,9 +67,11 @@
                 android:id="@+id/checkin_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:text="@string/checkin_button"
                 android:textSize="20sp"
+                android:layout_marginLeft="1.5dp"
+                android:layout_marginStart="1.5dp"
                 android:background="@drawable/business_fragment_button_selector">
             </Button>
         </LinearLayout>
