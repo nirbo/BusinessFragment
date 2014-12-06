@@ -5,11 +5,9 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,14 +18,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.nirbo.businessfragment.R;
+import org.nirbo.businessfragment.listeners.CameraZoomChangeListener;
 import org.nirbo.businessfragment.listeners.ZoomBarOnChangeListener;
+import org.nirbo.businessfragment.views.MapZoomBar;
 import org.nirbo.businessfragment.views.VerticalSeekBar;
 
 public class NestedMapFragment extends MapFragment {
 
     static NestedMapFragment fragment;
     private Activity mContext;
-    private VerticalSeekBar mMapZoomBar;
+    private MapZoomBar mMapZoomBar;
+    private GoogleMap mMap;
 
     // Default constructor
     public NestedMapFragment() {
@@ -45,7 +46,11 @@ public class NestedMapFragment extends MapFragment {
         View view = super.onCreateView(inflater, viewGroup, bundle);
 
         mContext = getActivity();
-        mMapZoomBar = (VerticalSeekBar) mContext.findViewById(R.id.map_zoom_bar);
+        mMap = fragment.getMap();
+        mMapZoomBar = (MapZoomBar) mContext.findViewById(R.id.map_zoom_bar);
+
+        mMapZoomBar.setOnSeekBarChangeListener(new ZoomBarOnChangeListener(mMap, getCurrentLocation()));
+        mMap.setOnCameraChangeListener(new CameraZoomChangeListener(mMapZoomBar, mMap));
 
         return view;
     }
@@ -65,39 +70,44 @@ public class NestedMapFragment extends MapFragment {
         settings.setMyLocationButtonEnabled(false);
         settings.setZoomControlsEnabled(false);
 
-        displayCurrentLocation(fragment);
+        displayCurrentLocation();
     }
 
-    private void displayCurrentLocation(MapFragment fragment) {
-        Activity context = getActivity();
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+    private void displayCurrentLocation() {
+        LatLng coordinates = getCurrentLocation();
+        
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(coordinates);
+        mMap.addMarker(markerOptions);
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(coordinates)
+                .zoom(15)
+                .build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        setZoomBarToCurrentLevel(mMap);
+    }
+
+    private LatLng getCurrentLocation() {
+        LocationManager locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        LatLng coordinates;
 
         if (location != null) {
-            LatLng coordinates = new LatLng(location.getLatitude(), location.getLongitude());
-            GoogleMap mMap = fragment.getMap();
-
-            MarkerOptions markerOptions = new MarkerOptions()
-                    .position(coordinates);
-
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(coordinates)
-                    .zoom(15)
-                    .build();
-
-            // TODO: FIX CAMERA ANIMATION WHEN SETTING ZOOMBAR PROGRESS
-//            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            mMap.addMarker(markerOptions);
-
-            setZoomBarToCurrentLevel(mMap);
-            mMapZoomBar.setOnSeekBarChangeListener(new ZoomBarOnChangeListener(mMap));
+            coordinates = new LatLng(location.getLatitude(), location.getLongitude());
+        /*
+        TODO: This 'else' is for development purposes with an Android emulator ONLY; It is to be removed before going to production.
+         */
+        } else {
+            coordinates = new LatLng(32.074323, 34.792266);
         }
+
+        return coordinates;
     }
 
     private void setZoomBarToCurrentLevel(GoogleMap map) {
-        float zoomLevel = map.getCameraPosition().zoom;
-        mMapZoomBar.setProgress((int) zoomLevel);
+        mMapZoomBar.setProgress((int) map.getCameraPosition().zoom);
     }
 
 }

@@ -3,13 +3,16 @@ package org.nirbo.businessfragment.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
 
-import org.nirbo.businessfragment.R;
-
+/* An OnSeekBarChangeListener MUST be attached to the VerticalSeekBar object prior to calling the "setProgressAndThumb" method
+   Otherwise a NullPointerException will be thrown!
+*/
 public class VerticalSeekBar extends SeekBar {
+
+    private OnSeekBarChangeListener onChangeListener;
+    private int lastProgress = 0;
 
     public VerticalSeekBar(Context context) {
         super(context);
@@ -35,9 +38,14 @@ public class VerticalSeekBar extends SeekBar {
 
     protected void onDraw(Canvas c) {
         c.rotate(-90);
-        c.translate(-getHeight(),0);
+        c.translate(-getHeight(), 0);
 
         super.onDraw(c);
+    }
+
+    @Override
+    public void setOnSeekBarChangeListener(OnSeekBarChangeListener onChangeListener){
+        this.onChangeListener = onChangeListener;
     }
 
     @Override
@@ -48,19 +56,54 @@ public class VerticalSeekBar extends SeekBar {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_UP:
-                int i=0;
-                i=getMax() - (int) (getMax() * event.getY() / getHeight());
-                setProgress(i);
-                Log.i("Progress",getProgress()+"");
-                onSizeChanged(getWidth(), getHeight(), 0, 0);
+                onChangeListener.onStartTrackingTouch(this);
+                setPressed(true);
+                setSelected(true);
                 break;
+            case MotionEvent.ACTION_MOVE:
+                super.onTouchEvent(event);
+                int progress = getMax() - (int) (getMax() * event.getY() / getHeight());
 
+                if (progress < 0) {progress = 0;}
+                if (progress > getMax()) {progress = getMax();}
+                setProgress(progress);
+                if (progress != lastProgress) {
+                    lastProgress = progress;
+                    onChangeListener.onProgressChanged(this, progress, true);
+                }
+
+                onSizeChanged(getWidth(), getHeight() , 0, 0);
+                setPressed(true);
+                setSelected(true);
+                break;
+            case MotionEvent.ACTION_UP:
+                onChangeListener.onStopTrackingTouch(this);
+                setPressed(false);
+                setSelected(false);
+                break;
             case MotionEvent.ACTION_CANCEL:
+                super.onTouchEvent(event);
+                setPressed(false);
+                setSelected(false);
                 break;
         }
         return true;
     }
 
+    public synchronized void setProgressAndThumb(int progress) {
+        setProgress(progress);
+        onSizeChanged(getWidth(), getHeight() , 0, 0);
+        if (progress != lastProgress) {
+            lastProgress = progress;
+            onChangeListener.onProgressChanged(this, progress, true);
+        }
+    }
+
+    public synchronized void setMaximum(int maximum) {
+        setMax(maximum);
+    }
+
+    public synchronized int getMaximum() {
+        return getMax();
+    }
 }

@@ -20,14 +20,14 @@
             android:layout_height="match_parent">
         </FrameLayout>
 
-        <org.nirbo.businessfragment.views.VerticalSeekBar
+        <org.nirbo.businessfragment.views.MapZoomBar
             android:id="@+id/map_zoom_bar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center|right"
             android:max="16"
             android:progress="0">
-        </org.nirbo.businessfragment.views.VerticalSeekBar>
+        </org.nirbo.businessfragment.views.MapZoomBar>
     </FrameLayout>
 
     <LinearLayout
