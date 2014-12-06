@@ -25,7 +25,7 @@ import org.nirbo.businessfragment.views.VerticalSeekBar;
 
 public class NestedMapFragment extends MapFragment {
 
-    static NestedMapFragment fragment;
+    private static NestedMapFragment fragment;
     private Activity mContext;
     private MapZoomBar mMapZoomBar;
     private GoogleMap mMap;
@@ -60,22 +60,21 @@ public class NestedMapFragment extends MapFragment {
         super.onActivityCreated(savedInstanceState);
 
         customizeMapOptions();
+        displayCurrentLocation();
     }
 
-    // Customize the map's functionalities
+    // Customize the map's functionality
     private void customizeMapOptions() {
         UiSettings settings = getMap().getUiSettings();
 
         settings.setRotateGesturesEnabled(false);
         settings.setMyLocationButtonEnabled(false);
         settings.setZoomControlsEnabled(false);
-
-        displayCurrentLocation();
     }
 
     private void displayCurrentLocation() {
         LatLng coordinates = getCurrentLocation();
-        
+
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(coordinates);
         mMap.addMarker(markerOptions);
