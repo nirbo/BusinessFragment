@@ -26,7 +26,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center|right"
             android:max="16"
-            android:progress="0">
+            android:progress="0"
+            android:visibility="invisible">
         </org.nirbo.businessfragment.views.MapZoomBar>
     </FrameLayout>
 

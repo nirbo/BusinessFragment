@@ -8,21 +8,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.nirbo.businessfragment.R;
 import org.nirbo.businessfragment.listeners.CameraZoomChangeListener;
+import org.nirbo.businessfragment.listeners.ZoomBarAnimationListener;
 import org.nirbo.businessfragment.listeners.ZoomBarOnChangeListener;
 import org.nirbo.businessfragment.utilities.MapCamera;
 import org.nirbo.businessfragment.views.MapZoomBar;
-import org.nirbo.businessfragment.views.VerticalSeekBar;
 
 public class NestedMapFragment extends MapFragment {
 
@@ -75,13 +75,14 @@ public class NestedMapFragment extends MapFragment {
 
     private void displayCurrentLocation() {
         LatLng coordinates = getCurrentLocation();
+        Animation fadeInAnim = initZoomBarAnimation();
 
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(coordinates);
         mMap.addMarker(markerOptions);
 
-        MapCamera.setCameraPositionAndZoom(mMap, coordinates, 15);
-
+        MapCamera.setInitialCameraPosition(mMap, coordinates,mMapZoomBar, fadeInAnim);
+//        MapCamera.setCameraPositionAndZoom(mMap, coordinates, 15);
         setZoomBarToCurrentLevel(mMap);
     }
 
@@ -100,6 +101,13 @@ public class NestedMapFragment extends MapFragment {
         }
 
         return coordinates;
+    }
+
+    private Animation initZoomBarAnimation() {
+        Animation fadeIn = AnimationUtils.loadAnimation(mContext, R.anim.zoom_bar_fade_in);
+        fadeIn.setAnimationListener(new ZoomBarAnimationListener(mMapZoomBar));
+
+        return fadeIn;
     }
 
     private void setZoomBarToCurrentLevel(GoogleMap map) {
