@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.nirbo.businessfragment.R;
 import org.nirbo.businessfragment.listeners.CameraZoomChangeListener;
 import org.nirbo.businessfragment.listeners.ZoomBarOnChangeListener;
+import org.nirbo.businessfragment.utilities.MapCamera;
 import org.nirbo.businessfragment.views.MapZoomBar;
 import org.nirbo.businessfragment.views.VerticalSeekBar;
 
@@ -79,11 +80,7 @@ public class NestedMapFragment extends MapFragment {
                 .position(coordinates);
         mMap.addMarker(markerOptions);
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(coordinates)
-                .zoom(15)
-                .build();
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        MapCamera.setCameraPositionAndZoom(mMap, coordinates, 15);
 
         setZoomBarToCurrentLevel(mMap);
     }

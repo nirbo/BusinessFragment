@@ -7,6 +7,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
+import org.nirbo.businessfragment.utilities.MapCamera;
+
 public class ZoomBarOnChangeListener implements SeekBar.OnSeekBarChangeListener {
 
     private GoogleMap mMap;
@@ -24,11 +26,7 @@ public class ZoomBarOnChangeListener implements SeekBar.OnSeekBarChangeListener 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(mCoordinates)
-                    .zoom(progress)
-                    .build();
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            MapCamera.setCameraPositionAndZoom(mMap, mCoordinates, progress);
         }
     }
 
