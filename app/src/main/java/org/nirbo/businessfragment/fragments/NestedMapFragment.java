@@ -71,6 +71,7 @@ public class NestedMapFragment extends MapFragment {
         settings.setRotateGesturesEnabled(false);
         settings.setMyLocationButtonEnabled(false);
         settings.setZoomControlsEnabled(false);
+        settings.setIndoorLevelPickerEnabled(false);
     }
 
     private void displayCurrentLocation() {
@@ -82,7 +83,6 @@ public class NestedMapFragment extends MapFragment {
         mMap.addMarker(markerOptions);
 
         MapCamera.setInitialCameraPosition(mMap, coordinates,mMapZoomBar, fadeInAnim);
-//        MapCamera.setCameraPositionAndZoom(mMap, coordinates, 15);
         setZoomBarToCurrentLevel(mMap);
     }
 
