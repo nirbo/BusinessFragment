@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 
@@ -24,6 +26,8 @@ public class BusinessCardFragment extends Fragment {
     private GoogleMap mMap;
     private ImageView mBusinessPhoto;
     private MapZoomBar mMapZoomBar;
+    private LinearLayout mBusinessCardHandle;
+    private TextView mBusinessNameTitle;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -43,6 +47,8 @@ public class BusinessCardFragment extends Fragment {
 
         mBusinessPhoto = (ImageView) view.findViewById(R.id.business_photo);
         mMapZoomBar = (MapZoomBar) view.findViewById(R.id.map_zoom_bar);
+        mBusinessCardHandle = (LinearLayout) view.findViewById(R.id.slider_layout_handle);
+        mBusinessNameTitle = (TextView) view.findViewById(R.id.business_name_title);
 
         return view;
     }
@@ -70,6 +76,7 @@ public class BusinessCardFragment extends Fragment {
     private void initBusinessCardLayout() {
         ViewSize.setViewHeight(20, mBusinessPhoto);
         ViewSize.setViewHeight(70, mMapZoomBar);
+        ViewSize.setViewHeight(5, mBusinessCardHandle);
     }
 
 

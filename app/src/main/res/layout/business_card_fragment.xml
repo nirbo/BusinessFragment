@@ -36,6 +36,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        
+        <LinearLayout
+            android:id="@+id/slider_layout_handle"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal"
+            android:background="@color/BlueViolet">
+
+            <TextView
+                android:id="@+id/business_name_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/business_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="start|center_vertical">
+            </TextView>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/business_photo"
