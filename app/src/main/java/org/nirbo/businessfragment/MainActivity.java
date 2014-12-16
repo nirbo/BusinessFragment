@@ -6,9 +6,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -75,11 +74,15 @@ public class MainActivity extends ActionBarActivity {
     // Customize the sliding layout's features and params
     private void initSlidingLayoutParams() {
         SlidingUpPanelLayout sliderPanel = (SlidingUpPanelLayout) findViewById(R.id.slider_layout);
-        sliderPanel.setPanelSlideListener(new SlidingPanelListener(sliderPanel));
+        float anchorPoint = 0.3f;
+        sliderPanel.setPanelSlideListener(new SlidingPanelListener(this, anchorPoint));
+
+        // Set the anchor point of the sliding panel; measured by a float in percentage of the screen (0.0f to 1.0f)
+        sliderPanel.setAnchorPoint(anchorPoint);
 
         // Set the "open" limit of the sliding panel, it can be expanded up to 100% of the screen from this point
         // And when swiping down to collapse it, it will collapse down to this percentage of the screen and expose the map fragment.
-        sliderPanel.setPanelHeight(DisplaySize.getHeightPercent(30, displayHeight));
+        sliderPanel.setPanelHeight(DisplaySize.getHeightPercent(5, displayHeight));
     }
 
 }

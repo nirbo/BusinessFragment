@@ -27,7 +27,6 @@ public class BusinessCardFragment extends Fragment {
     private ImageView mBusinessPhoto;
     private MapZoomBar mMapZoomBar;
     private LinearLayout mBusinessCardHandle;
-    private TextView mBusinessNameTitle;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -48,7 +47,6 @@ public class BusinessCardFragment extends Fragment {
         mBusinessPhoto = (ImageView) view.findViewById(R.id.business_photo);
         mMapZoomBar = (MapZoomBar) view.findViewById(R.id.map_zoom_bar);
         mBusinessCardHandle = (LinearLayout) view.findViewById(R.id.slider_layout_handle);
-        mBusinessNameTitle = (TextView) view.findViewById(R.id.business_name_title);
 
         return view;
     }
@@ -75,7 +73,10 @@ public class BusinessCardFragment extends Fragment {
     // Set the Business Card views layout and sizes
     private void initBusinessCardLayout() {
         ViewSize.setViewHeight(20, mBusinessPhoto);
-        ViewSize.setViewHeight(70, mMapZoomBar);
+        ViewSize.setViewHeight(90, mMapZoomBar);
+
+        /* mBusinessCardHandle height must match the height defined by the 'sliderPanel.setPanelHeight' method
+        In the MainActivity class  */
         ViewSize.setViewHeight(5, mBusinessCardHandle);
     }
 

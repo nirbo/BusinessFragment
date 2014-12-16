@@ -8,9 +8,11 @@
     android:gravity="bottom"
     sothree:shadowHeight="5dp"
     sothree:paralaxOffset="100dp"
-    sothree:fadeColor="@android:color/transparent">
+    sothree:fadeColor="@android:color/transparent"
+    sothree:dragView="@+id/slider_layout_handle">
 
     <FrameLayout
+        android:id="@+id/map_root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -35,7 +37,8 @@
         android:id="@+id/business_card_content_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:clickable="true">
         
         <LinearLayout
             android:id="@+id/slider_layout_handle"
@@ -75,26 +78,48 @@
             android:padding="3dp">
 
             <Button
-                android:id="@+id/share_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/cheers_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="@string/cheers_button"
+                android:textSize="18sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/business_fragment_button_selector">
+            </Button>
+
+            <Button
+                android:id="@+id/share_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/share_button"
-                android:textSize="20sp"
-                android:layout_marginRight="1.5dp"
-                android:layout_marginEnd="1.5dp"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/business_fragment_button_selector">
             </Button>
 
             <Button
                 android:id="@+id/checkin_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/checkin_button"
-                android:textSize="20sp"
-                android:layout_marginLeft="1.5dp"
-                android:layout_marginStart="1.5dp"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/business_fragment_button_selector">
             </Button>
         </LinearLayout>

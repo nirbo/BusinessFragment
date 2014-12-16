@@ -13,7 +13,7 @@ public class ViewSize {
     }
 
     public static void setViewWidth(int percentage, View view) {
-        view.getLayoutParams().width = DisplaySize.getWidthPercent(percentage, MainActivity.displayHeight);
+        view.getLayoutParams().width = DisplaySize.getWidthPercent(percentage, MainActivity.displayWidth);
         view.requestLayout();
     }
 

@@ -30,7 +30,15 @@ public class DisplaySize {
         return (percentage * screenHeight) / 100;
     }
 
+    public static float getHeightPercent(float percentage, int screenHeight) {
+        return (percentage * screenHeight) / 1000;
+    }
+
     public static int getWidthPercent(int percentage, int screenWidth) {
         return (percentage * screenWidth) / 100;
+    }
+
+    public static float getWidthPercent(float percentage, int screenWidth) {
+        return (percentage * screenWidth) / 1000;
     }
 }
