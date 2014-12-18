@@ -2,6 +2,7 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:circleButton="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slider_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -77,51 +78,33 @@
             android:orientation="horizontal"
             android:padding="3dp">
 
-            <Button
+            <org.nirbo.businessfragment.views.CircleButton
                 android:id="@+id/cheers_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:gravity="center"
-                android:text="@string/cheers_button"
-                android:textSize="18sp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/business_fragment_button_selector">
-            </Button>
+                circleButton:button_color="@color/Gray">
+            </org.nirbo.businessfragment.views.CircleButton>
 
-            <Button
+            <org.nirbo.businessfragment.views.CircleButton
                 android:id="@+id/share_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/share_button"
-                android:textSize="18sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/business_fragment_button_selector">
-            </Button>
+                circleButton:button_color="@color/Gray">
+            </org.nirbo.businessfragment.views.CircleButton>
 
-            <Button
+            <org.nirbo.businessfragment.views.CircleButton
                 android:id="@+id/checkin_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/checkin_button"
-                android:textSize="18sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/business_fragment_button_selector">
-            </Button>
+                circleButton:button_color="@color/Gray">
+            </org.nirbo.businessfragment.views.CircleButton>
         </LinearLayout>
 
     </LinearLayout>
