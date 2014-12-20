@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="CircleButton">
-        <attr name="button_color" format="color" />
+    <declare-styleable name="CircleImageView">
+        <attr name="imageView_color" format="color" />
     </declare-styleable>
 
 </resources>

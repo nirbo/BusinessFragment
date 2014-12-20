@@ -2,7 +2,7 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    xmlns:circleButton="http://schemas.android.com/apk/res-auto"
+    xmlns:CircleImageView="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slider_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -87,13 +87,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <org.nirbo.businessfragment.views.CircleButton
+                <org.nirbo.businessfragment.views.CircleImageView
                     android:id="@+id/cheers_button"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_centerInParent="true"
-                    circleButton:button_color="@color/Gray">
-                </org.nirbo.businessfragment.views.CircleButton>
+                    CircleImageView:imageView_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleImageView>
 
                 <TextView
                     android:id="@+id/cheers_text"
@@ -127,13 +127,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <org.nirbo.businessfragment.views.CircleButton
+                <org.nirbo.businessfragment.views.CircleImageView
                     android:id="@+id/checkin_button"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_centerInParent="true"
-                    circleButton:button_color="@color/Gray">
-                </org.nirbo.businessfragment.views.CircleButton>
+                    CircleImageView:imageView_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleImageView>
 
                 <TextView
                     android:id="@+id/checkin_text"
@@ -167,13 +167,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <org.nirbo.businessfragment.views.CircleButton
+                <org.nirbo.businessfragment.views.CircleImageView
                     android:id="@+id/share_button"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_centerInParent="true"
-                    circleButton:button_color="@color/Gray">
-                </org.nirbo.businessfragment.views.CircleButton>
+                    CircleImageView:imageView_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleImageView>
 
                 <TextView
                     android:id="@+id/share_text"

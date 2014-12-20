@@ -10,24 +10,24 @@ import android.widget.ImageView;
 
 import org.nirbo.businessfragment.R;
 
-public class CircleButton extends ImageView {
+public class CircleImageView extends ImageView {
 
     private int mCenterY;
     private int mCenterX;
     private int mOuterRadius;
     private Paint mCirclePaint;
 
-    public CircleButton(Context context) {
+    public CircleImageView(Context context) {
         super(context);
         init(context, null);
     }
 
-    public CircleButton(Context context, AttributeSet attrs) {
+    public CircleImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public CircleButton(Context context, AttributeSet attrs, int defStyle) {
+    public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs);
     }
@@ -66,8 +66,8 @@ public class CircleButton extends ImageView {
 
         int color = Color.BLACK;
         if (attrs != null) {
-            final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleButton);
-            color = typedArray.getColor(R.styleable.CircleButton_button_color, color);
+            final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView);
+            color = typedArray.getColor(R.styleable.CircleImageView_imageView_color, color);
             typedArray.recycle();
         }
 
