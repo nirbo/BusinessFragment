@@ -72,42 +72,136 @@
         </ImageView>
 
         <LinearLayout
-            android:id="@+id/share_checkin_buttons_container"
+            android:id="@+id/buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="3dp">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp">
 
-            <org.nirbo.businessfragment.views.CircleButton
-                android:id="@+id/cheers_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:gravity="center"
-                circleButton:button_color="@color/Gray">
-            </org.nirbo.businessfragment.views.CircleButton>
+                android:layout_gravity="center"
+                android:gravity="center">
 
-            <org.nirbo.businessfragment.views.CircleButton
-                android:id="@+id/share_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                circleButton:button_color="@color/Gray">
-            </org.nirbo.businessfragment.views.CircleButton>
+                <org.nirbo.businessfragment.views.CircleButton
+                    android:id="@+id/cheers_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    circleButton:button_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleButton>
 
-            <org.nirbo.businessfragment.views.CircleButton
-                android:id="@+id/checkin_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                <TextView
+                    android:id="@+id/cheers_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/cheers_button"
+                    android:textSize="12sp"
+                    android:background="@android:color/transparent">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/cheers_count"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:elevation="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignBottom="@id/cheers_button"
+                    android:background="@color/material_orange_900"
+                    android:text="2973"
+                    android:textSize="12sp"
+                    android:textStyle="bold">
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                circleButton:button_color="@color/Gray">
-            </org.nirbo.businessfragment.views.CircleButton>
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <org.nirbo.businessfragment.views.CircleButton
+                    android:id="@+id/checkin_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    circleButton:button_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleButton>
+
+                <TextView
+                    android:id="@+id/checkin_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/checkin_button"
+                    android:textSize="12sp"
+                    android:background="@android:color/transparent">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/checkin_count"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:elevation="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignBottom="@id/checkin_button"
+                    android:background="@color/material_orange_900"
+                    android:text="398271"
+                    android:textSize="12sp"
+                    android:textStyle="bold">
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <org.nirbo.businessfragment.views.CircleButton
+                    android:id="@+id/share_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    circleButton:button_color="@color/Gray">
+                </org.nirbo.businessfragment.views.CircleButton>
+
+                <TextView
+                    android:id="@+id/share_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/share_button"
+                    android:textSize="12sp"
+                    android:background="@android:color/transparent">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/share_count"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:elevation="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignBottom="@id/share_button"
+                    android:background="@color/material_orange_900"
+                    android:text="9289091"
+                    android:textSize="12sp"
+                    android:textStyle="bold">
+                </TextView>
+            </RelativeLayout>
         </LinearLayout>
-
     </LinearLayout>
+
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
