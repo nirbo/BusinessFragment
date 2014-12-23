@@ -63,22 +63,16 @@
             </TextView>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/business_photo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@android:drawable/ic_menu_camera"
-            android:padding="3dp">
-        </ImageView>
-
         <LinearLayout
-            android:id="@+id/buttons_container"
+            android:id="@+id/counters_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:gravity="center"
-            android:padding="10dp">
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:baselineAligned="false">
 
             <RelativeLayout
                 android:layout_width="match_parent"
