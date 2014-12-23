@@ -74,7 +74,7 @@ public class BusinessCardFragment extends Fragment {
 
         /* mBusinessCardHandle height must match the height defined by the 'sliderPanel.setPanelHeight' method
         In the MainActivity class  */
-        ViewSize.setViewHeight(5, mBusinessCardHandle);
+        ViewSize.setViewHeight(7, mBusinessCardHandle);
     }
 
 
