@@ -14,8 +14,9 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
 
     private Activity mContext;
     private float mAnchorPoint;
-    private FrameLayout mapRootView;
-    private MapZoomBar mapZoomBar;
+    private FrameLayout mMapRootView;
+    private MapZoomBar mMapZoomBar;
+    private boolean mAnchorFlag;
 
     // Default Constructor
     public SlidingPanelListener() {}
@@ -24,6 +25,7 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
     public SlidingPanelListener(Activity context, float anchorPoint) {
         this.mContext = context;
         this.mAnchorPoint = anchorPoint;
+        this.mAnchorFlag = false;
     }
 
     @Override
@@ -33,7 +35,10 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
 
     @Override
     public void onPanelCollapsed(View slidingPanel) {
-        restoreFullMapView();
+        if (mAnchorFlag) {
+            mAnchorFlag = false;
+            restoreFullMapView();
+        }
     }
 
     @Override
@@ -43,6 +48,7 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
 
     @Override
     public void onPanelAnchored(View slidingPanel) {
+        mAnchorFlag = true;
         adjustMapView();
     }
 
@@ -53,18 +59,18 @@ public class SlidingPanelListener implements SlidingUpPanelLayout.PanelSlideList
 
     // Re-adjusts the map view's height when the sliding panel is anchored and released from anchor
     private void adjustMapView() {
-        mapRootView = (FrameLayout) mContext.findViewById(R.id.map_root_view);
-        mapZoomBar = (MapZoomBar) mContext.findViewById(R.id.map_zoom_bar);
+        mMapRootView = (FrameLayout) mContext.findViewById(R.id.map_root_view);
+        mMapZoomBar = (MapZoomBar) mContext.findViewById(R.id.map_zoom_bar);
 
         float newMapViewSize = (1.0f - mAnchorPoint);
         int newMapViewSizePercent = (int) (newMapViewSize * 100);
-        ViewSize.setViewHeight((newMapViewSizePercent + 2), mapRootView);
-        ViewSize.setViewHeight((newMapViewSizePercent - 5), mapZoomBar);
+        ViewSize.setViewHeight((newMapViewSizePercent + 2), mMapRootView);
+        ViewSize.setViewHeight((newMapViewSizePercent - 5), mMapZoomBar);
     }
 
     // Restore the map views to 100% of the screen upon panel collapse
     private void restoreFullMapView() {
-        ViewSize.setViewHeight(100, mapRootView);
-        ViewSize.setViewHeight(90, mapZoomBar);
+        ViewSize.setViewHeight(100, mMapRootView);
+        ViewSize.setViewHeight(90, mMapZoomBar);
     }
 }

@@ -10,9 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.larvalabs.svgandroid.SVGParser;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
@@ -28,7 +31,8 @@ public class BusinessCardFragment extends Fragment {
     private Activity mContext;
     private GoogleMap mMap;
     private MapZoomBar mMapZoomBar;
-    private LinearLayout mBusinessCardHandle;
+    private RelativeLayout mBusinessCardHandleContainer;
+    private ImageView mBusinessCardHandle;
     private RecyclerView mBusinessServices;
 
     // Default constructor
@@ -50,7 +54,8 @@ public class BusinessCardFragment extends Fragment {
         mContext = getActivity();
 
         mMapZoomBar = (MapZoomBar) view.findViewById(R.id.map_zoom_bar);
-        mBusinessCardHandle = (LinearLayout) view.findViewById(R.id.slider_layout_handle);
+        mBusinessCardHandleContainer = (RelativeLayout) view.findViewById(R.id.slider_layout_handle_container);
+        mBusinessCardHandle = (ImageView) view.findViewById(R.id.slider_layout_handle);
         mBusinessServices = (RecyclerView) view.findViewById(R.id.business_services);
 
         return view;
@@ -80,9 +85,9 @@ public class BusinessCardFragment extends Fragment {
     private void initBusinessCardLayout() {
         ViewSize.setViewHeight(90, mMapZoomBar);
 
-        /* mBusinessCardHandle height must match the height defined by the 'sliderPanel.setPanelHeight' method
+        /* mBusinessCardHandleContainer height must match the height defined by the 'sliderPanel.setPanelHeight' method
         In the MainActivity class  */
-        ViewSize.setViewHeight(7, mBusinessCardHandle);
+        ViewSize.setViewHeight(7, mBusinessCardHandleContainer);
 
         ViewSize.setViewHeight(10, mBusinessServices);
         ViewSize.setViewWidth(85, mBusinessServices);
