@@ -194,8 +194,17 @@
                 </TextView>
             </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/business_services"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:requiresFadingEdge="horizontal">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
