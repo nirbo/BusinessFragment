@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.larvalabs.svgandroid.SVGParser;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
@@ -85,10 +84,10 @@ public class BusinessCardFragment extends Fragment {
     private void initBusinessCardLayout() {
         ViewSize.setViewHeight(90, mMapZoomBar);
 
-        /* mBusinessCardHandleContainer height must match the height defined by the 'sliderPanel.setPanelHeight' method
-        In the MainActivity class  */
+        // mBusinessCardHandleContainer height must match the height defined by the 'sliderPanel.setPanelHeight' method un the MainActivity class
         ViewSize.setViewHeight(7, mBusinessCardHandleContainer);
 
+        // Set dimensions for the business services RecyclerView
         ViewSize.setViewHeight(10, mBusinessServices);
         ViewSize.setViewWidth(85, mBusinessServices);
     }
@@ -106,8 +105,8 @@ public class BusinessCardFragment extends Fragment {
 
     private int[] populateServiceImages() {
         int[] images = new int[]{
-                android.R.drawable.btn_radio,
-                android.R.drawable.btn_star,
+                android.R.drawable.ic_lock_idle_lock,
+                android.R.drawable.ic_menu_call,
                 android.R.drawable.ic_delete,
                 android.R.drawable.ic_dialog_alert,
                 android.R.drawable.ic_dialog_dialer,
