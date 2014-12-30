@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,14 +18,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
+import org.nirbo.businessfragment.adapters.OffersRecyclerAdapter;
 import org.nirbo.businessfragment.adapters.ServicesRecyclerAdapter;
 import org.nirbo.businessfragment.utilities.ViewSize;
 import org.nirbo.businessfragment.views.MapZoomBar;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class BusinessCardFragment extends Fragment {
 
@@ -35,8 +41,9 @@ public class BusinessCardFragment extends Fragment {
     private GoogleMap mMap;
     private MapZoomBar mMapZoomBar;
     private RelativeLayout mBusinessCardHandleContainer;
-    private ImageView mBusinessCardHandle;
     private RecyclerView mBusinessServices;
+    private TextView mOffersTitle;
+    private RecyclerView mOffersContainer;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -58,8 +65,9 @@ public class BusinessCardFragment extends Fragment {
 
         mMapZoomBar = (MapZoomBar) view.findViewById(R.id.map_zoom_bar);
         mBusinessCardHandleContainer = (RelativeLayout) view.findViewById(R.id.slider_layout_handle_container);
-        mBusinessCardHandle = (ImageView) view.findViewById(R.id.slider_layout_handle);
         mBusinessServices = (RecyclerView) view.findViewById(R.id.business_services);
+        mOffersTitle = (TextView) view.findViewById(R.id.offers_title);
+        mOffersContainer = (RecyclerView) view.findViewById(R.id.offers_container);
 
         return view;
     }
@@ -71,6 +79,7 @@ public class BusinessCardFragment extends Fragment {
         initMap();
         initBusinessCardLayout();
         initServicesRecyclerView();
+        initOffersRecyclerView();
     }
 
     // Initialize Google Maps fragment
@@ -94,6 +103,11 @@ public class BusinessCardFragment extends Fragment {
         // Set dimensions for the business services RecyclerView
         ViewSize.setViewHeight(10, mBusinessServices);
         ViewSize.setViewWidth(85, mBusinessServices);
+
+        // Set dimensions for the Offers RecyclerView and its title TextView
+        ViewSize.setViewWidth(85, mOffersTitle);
+        ViewSize.setViewHeight(40, mOffersContainer);
+        ViewSize.setViewWidth(85, mOffersContainer);
     }
 
     private void initServicesRecyclerView() {
@@ -121,6 +135,21 @@ public class BusinessCardFragment extends Fragment {
                 android.R.drawable.ic_input_add,
                 android.R.drawable.ic_input_delete
         };
+    }
+
+    private void initOffersRecyclerView() {
+        LinearLayoutManager llm = new LinearLayoutManager(mContext);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        mOffersContainer.setLayoutManager(llm);
+        mOffersContainer.setHasFixedSize(true);
+
+        Resources res = getResources();
+        String[] offers = res.getStringArray(R.array.offersPlaceholder);
+        List<String> offersList = Arrays.asList(offers);
+
+        OffersRecyclerAdapter adapter = new OffersRecyclerAdapter(offersList, mContext);
+        mOffersContainer.setAdapter(adapter);
+
     }
 
 }

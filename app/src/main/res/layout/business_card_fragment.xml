@@ -212,6 +212,29 @@
             android:requiresFadingEdge="horizontal">
         </android.support.v7.widget.RecyclerView>
 
+        <TextView
+            android:id="@+id/offers_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/offers_title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:gravity="start|center_vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@color/material_orange_900">
+        </TextView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/offers_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:requiresFadingEdge="vertical"
+            android:background="@color/material_orange_900">
+        </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 

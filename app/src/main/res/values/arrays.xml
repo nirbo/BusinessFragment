@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="offersPlaceholder">
+        <item>Offer 1</item>
+        <item>Offer 2</item>
+        <item>Offer 3</item>
+        <item>Offer 4</item>
+        <item>Offer 5</item>
+        <item>Offer 6</item>
+        <item>Offer 7</item>
+        <item>Offer 8</item>
+        <item>Offer 9</item>
+        <item>Offer 10</item>
+        <item>Offer 11</item>
+        <item>Offer 12</item>
+        <item>Offer 13</item>
+        <item>Offer 14</item>
+        <item>Offer 15</item>
+    </string-array>
+
+</resources>

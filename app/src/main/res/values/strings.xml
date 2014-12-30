@@ -8,6 +8,7 @@
     <string name="share_button">Shares</string>
     <string name="checkin_button">Checked In</string>
     <string name="business_name">Business Name</string>
+    <string name="offers_title">Offers</string>
 
     <!-- Accessibility -->
     <string name="sliding_panel_handle">Sliding Panel Handle</string>
