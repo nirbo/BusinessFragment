@@ -50,7 +50,10 @@
             <ImageView
                 android:id="@+id/slider_layout_handle"
                 android:layout_width="match_parent"
-                android:layout_height="36dp">
+                android:layout_height="36dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sliding_panel_handle"
+                android:contentDescription="@string/sliding_panel_handle">
             </ImageView>
 
             <TextView
@@ -60,9 +63,9 @@
                 android:text="@string/business_name"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:padding="7dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:padding="3dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="start|center_vertical"
                 android:layout_gravity="start|center_vertical">
             </TextView>

@@ -9,4 +9,7 @@
     <string name="checkin_button">Checked In</string>
     <string name="business_name">Business Name</string>
 
+    <!-- Accessibility -->
+    <string name="sliding_panel_handle">Sliding Panel Handle</string>
+
 </resources>

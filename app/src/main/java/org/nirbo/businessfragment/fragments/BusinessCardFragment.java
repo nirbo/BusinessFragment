@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -85,7 +89,7 @@ public class BusinessCardFragment extends Fragment {
         ViewSize.setViewHeight(90, mMapZoomBar);
 
         // mBusinessCardHandleContainer height must match the height defined by the 'sliderPanel.setPanelHeight' method un the MainActivity class
-        ViewSize.setViewHeight(7, mBusinessCardHandleContainer);
+        ViewSize.setViewHeight(6, mBusinessCardHandleContainer);
 
         // Set dimensions for the business services RecyclerView
         ViewSize.setViewHeight(10, mBusinessServices);
@@ -104,7 +108,8 @@ public class BusinessCardFragment extends Fragment {
     }
 
     private int[] populateServiceImages() {
-        int[] images = new int[]{
+
+        return new int[] {
                 android.R.drawable.ic_lock_idle_lock,
                 android.R.drawable.ic_menu_call,
                 android.R.drawable.ic_delete,
@@ -116,8 +121,6 @@ public class BusinessCardFragment extends Fragment {
                 android.R.drawable.ic_input_add,
                 android.R.drawable.ic_input_delete
         };
-
-        return images;
     }
 
 }

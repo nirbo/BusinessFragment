@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Set the "open" limit of the sliding panel, it can be expanded up to 100% of the screen from this point
         // And when swiping down to collapse it, it will collapse down to this percentage of the screen and expose the map fragment.
-        sliderPanel.setPanelHeight(DisplaySize.getHeightPercent(7, displayHeight));
+        sliderPanel.setPanelHeight(DisplaySize.getHeightPercent(6, displayHeight));
     }
 
 }
