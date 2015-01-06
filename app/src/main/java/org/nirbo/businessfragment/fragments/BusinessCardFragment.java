@@ -24,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 
 import org.nirbo.businessfragment.MainActivity;
 import org.nirbo.businessfragment.R;
+import org.nirbo.businessfragment.adapters.BeersRecyclerAdapter;
 import org.nirbo.businessfragment.adapters.OffersRecyclerAdapter;
 import org.nirbo.businessfragment.adapters.ServicesRecyclerAdapter;
 import org.nirbo.businessfragment.utilities.ViewSize;
@@ -44,6 +45,7 @@ public class BusinessCardFragment extends Fragment {
     private RecyclerView mBusinessServices;
     private TextView mOffersTitle;
     private RecyclerView mOffersContainer;
+    private RecyclerView mDrinks;
 
     // Default constructor
     public BusinessCardFragment() {
@@ -68,6 +70,7 @@ public class BusinessCardFragment extends Fragment {
         mBusinessServices = (RecyclerView) view.findViewById(R.id.business_services);
         mOffersTitle = (TextView) view.findViewById(R.id.offers_title);
         mOffersContainer = (RecyclerView) view.findViewById(R.id.offers_container);
+        mDrinks = (RecyclerView) view.findViewById(R.id.drinks);
 
         return view;
     }
@@ -80,6 +83,7 @@ public class BusinessCardFragment extends Fragment {
         initBusinessCardLayout();
         initServicesRecyclerView();
         initOffersRecyclerView();
+        initDrinksRecyclerView();
     }
 
     // Initialize Google Maps fragment
@@ -108,6 +112,10 @@ public class BusinessCardFragment extends Fragment {
         ViewSize.setViewWidth(85, mOffersTitle);
         ViewSize.setViewHeight(40, mOffersContainer);
         ViewSize.setViewWidth(85, mOffersContainer);
+
+        // Set dimensions for the Drinks RecyclerView
+        ViewSize.setViewHeight(10, mDrinks);
+        ViewSize.setViewWidth(85, mDrinks);
     }
 
     private void initServicesRecyclerView() {
@@ -122,7 +130,6 @@ public class BusinessCardFragment extends Fragment {
     }
 
     private int[] populateServiceImages() {
-
         return new int[] {
                 android.R.drawable.ic_lock_idle_lock,
                 android.R.drawable.ic_menu_call,
@@ -149,7 +156,32 @@ public class BusinessCardFragment extends Fragment {
 
         OffersRecyclerAdapter adapter = new OffersRecyclerAdapter(offersList, mContext);
         mOffersContainer.setAdapter(adapter);
+    }
 
+    private void initDrinksRecyclerView() {
+        LinearLayoutManager llm = new LinearLayoutManager(mContext);
+        llm.setOrientation(LinearLayout.HORIZONTAL);
+        mDrinks.setLayoutManager(llm);
+        mDrinks.setHasFixedSize(true);
+
+        int[] beerLogos = populateBeerLogos();
+        BeersRecyclerAdapter adapter = new BeersRecyclerAdapter(beerLogos);
+        mDrinks.setAdapter(adapter);
+    }
+
+    private int[] populateBeerLogos() {
+        return new int[] {
+            R.drawable.carlsberg,
+            R.drawable.budweiser,
+            R.drawable.maccabee,
+            R.drawable.leffe,
+            R.drawable.barbar,
+            R.drawable.becks,
+            R.drawable.chang,
+            R.drawable.duvel,
+            R.drawable.guinness,
+            R.drawable.kilkenny
+        };
     }
 
 }

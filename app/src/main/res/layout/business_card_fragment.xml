@@ -232,7 +232,23 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:requiresFadingEdge="vertical"
+            android:scrollbars="vertical"
+            android:scrollbarDefaultDelayBeforeFade="250"
+            android:fadeScrollbars="true"
+            android:scrollbarStyle="insideInset"
+            android:scrollbarThumbVertical="@color/Black"
+            android:scrollbarSize="3dp"
             android:background="@drawable/offers_list_background">
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drinks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:requiresFadingEdge="horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent">
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
