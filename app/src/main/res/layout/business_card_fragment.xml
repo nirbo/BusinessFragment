@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sliding_panel_handle"
+                android:src="@raw/sliding_panel_handle"
                 android:contentDescription="@string/sliding_panel_handle">
             </ImageView>
 

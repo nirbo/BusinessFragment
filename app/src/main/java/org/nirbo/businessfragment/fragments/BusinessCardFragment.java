@@ -125,7 +125,7 @@ public class BusinessCardFragment extends Fragment {
         mBusinessServices.setHasFixedSize(true);
 
         int[] serviceImages = populateServiceImages();
-        ServicesRecyclerAdapter adapter = new ServicesRecyclerAdapter(serviceImages);
+        ServicesRecyclerAdapter adapter = new ServicesRecyclerAdapter(serviceImages, mContext);
         mBusinessServices.setAdapter(adapter);
     }
 
@@ -165,7 +165,7 @@ public class BusinessCardFragment extends Fragment {
         mDrinks.setHasFixedSize(true);
 
         int[] beerLogos = populateBeerLogos();
-        BeersRecyclerAdapter adapter = new BeersRecyclerAdapter(beerLogos);
+        BeersRecyclerAdapter adapter = new BeersRecyclerAdapter(beerLogos, mContext);
         mDrinks.setAdapter(adapter);
     }
 

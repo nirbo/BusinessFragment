@@ -1,5 +1,8 @@
 package org.nirbo.businessfragment.adapters;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +14,11 @@ import org.nirbo.businessfragment.R;
 public class BeersRecyclerAdapter extends RecyclerView.Adapter<BeersRecyclerAdapter.BeersViewHolder> {
 
     private int[] mDrinksLogos;
+    private Activity mContext;
 
-    public BeersRecyclerAdapter(int[] drinkLogos) {
+    public BeersRecyclerAdapter(int[] drinkLogos, Activity context) {
         this.mDrinksLogos = drinkLogos;
+        this.mContext = context;
     }
 
     @Override
@@ -27,7 +32,8 @@ public class BeersRecyclerAdapter extends RecyclerView.Adapter<BeersRecyclerAdap
     @Override
     public void onBindViewHolder(BeersViewHolder beersViewHolder, int position) {
         int logo = mDrinksLogos[position];
-        BeersViewHolder.mDrinkLogo.setImageResource(logo);
+        Bitmap beerLogo = BitmapFactory.decodeResource(mContext.getResources(), logo);
+        BeersViewHolder.mDrinkLogo.setImageBitmap(beerLogo);
     }
 
     @Override

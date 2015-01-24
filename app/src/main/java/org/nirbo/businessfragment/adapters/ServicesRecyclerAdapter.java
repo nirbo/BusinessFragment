@@ -1,5 +1,8 @@
 package org.nirbo.businessfragment.adapters;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +15,11 @@ import org.nirbo.businessfragment.R;
 public class ServicesRecyclerAdapter extends RecyclerView.Adapter<ServicesRecyclerAdapter.ServicesViewHolder> {
 
     private int[] mServiceImages;
+    private Activity mContext;
 
-    public ServicesRecyclerAdapter(int[] serviceImages) {
+    public ServicesRecyclerAdapter(int[] serviceImages, Activity context) {
         this.mServiceImages = serviceImages;
+        this.mContext = context;
     }
 
     @Override
@@ -27,8 +32,9 @@ public class ServicesRecyclerAdapter extends RecyclerView.Adapter<ServicesRecycl
 
     @Override
     public void onBindViewHolder(ServicesRecyclerAdapter.ServicesViewHolder holder, int position) {
-        int image = mServiceImages[position];
-        ServicesViewHolder.mServiceImage.setImageResource(image);
+        int service = mServiceImages[position];
+        Bitmap serviceImage = BitmapFactory.decodeResource(mContext.getResources(), service);
+        ServicesViewHolder.mServiceImage.setImageBitmap(serviceImage);
     }
 
     @Override
